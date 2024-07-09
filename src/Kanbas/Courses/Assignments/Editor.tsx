@@ -1,11 +1,12 @@
 export default function AssignmentEditor() {
   return (
     <div id="wd-assignments-editor">
-      <label htmlFor="wd-name">Assignment Name</label>
+      <b><label htmlFor="wd-name">Assignment Name</label></b><br /><br />
+
       <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
       <textarea id="wd-description">
-        The assignment is available online. Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section, links to each of the lab assignments, link to the Kanbas application, links to all relevant source code repositories. The Kanbas application should include a link to navigate back to the landing page.
-      </textarea>
+      The assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application Links to all relevant source code repositories
+To navigate back to the landing page      </textarea>
       <br />
       <label htmlFor="wd-points">Points</label>
       <input id="wd-points" value="100" /><br /><br />
@@ -41,19 +42,17 @@ export default function AssignmentEditor() {
       <input type="checkbox" id="wd-file-upload" />
       <label htmlFor="wd-file-upload">File Uploads</label>
       <br /><br />
-      <label htmlFor="wd-assign-to">Assign to</label>
-      <select id="wd-assign-to">
-        <option value="everyone">Everyone</option>
-      </select>
-      <br /><br />
-      <label htmlFor="wd-due-date">Due</label>
+      <label htmlFor="wd-assign-to">Assign to</label><br /><br />
+      <input id="wd-assign-to" value="Everyone" /><br /><br />
+      <label htmlFor="wd-due-date">Due</label><br /><br />
       <input type="date" id="wd-due-date" value="2024-05-13" /><br /><br />
-      <label htmlFor="wd-available-from">Available From</label>
-      <input type="date" id="wd-available-from" value="2024-05-06" /><br /><br />
+      <label htmlFor="wd-available-from">Available from</label> 
       <label htmlFor="wd-available-until">Until</label>
+      <br /><br />
+      <input type="date" id="wd-available-from" value="2024-05-06" />
       <input type="date" id="wd-available-until" value="2024-05-20" /><br /><br />
-      <button type="submit">Save</button>
       <button type="button">Cancel</button>
+      <button type="submit">Save</button>
     </div>
   );
 }
