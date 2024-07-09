@@ -13,5 +13,3 @@ export default function CourseStatus() {
         <button>View Course Notifications</button>
       </div>
   );}
-  
-  
