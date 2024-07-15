@@ -3,7 +3,7 @@ import {useLocation} from "react-router";
 
 export default function CoursesNavigation() {
 
-  const {pathname} = useLocation();
+    const {pathname} = useLocation();
     const active = 'active';
     const inactive = 'text-danger';
     
@@ -29,6 +29,12 @@ export default function CoursesNavigation() {
 
       <a id="wd-course-grades-link" href="#/Kanbas/Courses/1234/Grades"
          className={`list-group-item border border-0 ${pathname.includes("Grades") ? active : inactive}`}>Grades</a>
+
+      <a id="wd-course-people-link" href="#/Kanbas/Courses/1234/People"
+         className={`list-group-item border border-0 ${pathname.includes("People") ? active : inactive}`}>People</a>
+
+      <a id="wd-course-settings-link" href="#/Kanbas/Courses/1234/Settings"
+         className={`list-group-item border border-0 ${pathname.includes("Settings") ? active : inactive}`}>Settings</a>   
   </div>
   );}
   

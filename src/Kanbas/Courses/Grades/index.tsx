@@ -64,7 +64,7 @@ export default function Grades() {
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row" className="text-danger">Jane Adams</th>
+                            <th scope="row" className="text-danger">Divyadharshini</th>
                             <td className="text-center">100%</td>
                             <td className="text-center">100%</td>
                             <td className="text-center">
@@ -73,7 +73,7 @@ export default function Grades() {
                             <td className="text-center">100%</td>
                         </tr>
                         <tr>
-                            <th scope="row" className="text-danger">Christina Allen</th>
+                            <th scope="row" className="text-danger">Alex Nyugen</th>
                             <td className="text-center">100%</td>
                             <td className="text-center">100%</td>
                             <td className="text-center">
@@ -82,7 +82,7 @@ export default function Grades() {
                             <td className="text-center">100%</td>
                         </tr>
                         <tr>
-                            <th scope="row" className="text-danger">Samreen Ansari</th>
+                            <th scope="row" className="text-danger">Sameer</th>
                             <td className="text-center">100%</td>
                             <td className="text-center">100%</td>
                             <td className="text-center">
@@ -91,7 +91,7 @@ export default function Grades() {
                             <td className="text-center">100%</td>
                         </tr>
                         <tr>
-                            <th scope="row" className="text-danger">Han Bao</th>
+                            <th scope="row" className="text-danger">Nikhil</th>
                             <td className="text-center">100%</td>
                             <td className="text-center">100%</td>
                             <td className="text-center">
@@ -100,7 +100,7 @@ export default function Grades() {
                             <td className="text-center">100%</td>
                         </tr>
                         <tr>
-                            <th scope="row" className="text-danger">Mahi Sai Srinivas Bobbili</th>
+                            <th scope="row" className="text-danger">Manoj Kolli</th>
                             <td className="text-center">100%</td>
                             <td className="text-center">100%</td>
                             <td className="text-center">
@@ -109,7 +109,7 @@ export default function Grades() {
                             <td className="text-center">100%</td>
                         </tr>
                         <tr>
-                            <th scope="row" className="text-danger">Siran Cao</th>
+                            <th scope="row" className="text-danger">Sri Akshaya</th>
                             <td className="text-center">100%</td>
                             <td className="text-center">100%</td>
                             <td className="text-center">
