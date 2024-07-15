@@ -120,7 +120,7 @@ export default function Dashboard() {
                                   <a className="wd-dashboard-course-link" href="#/Kanbas/Courses/1234/Home">Python Developer</a>
                               </p>
                               <p className="wd-dashboard-course-title course-info">
-                                  <a className="wd-dashboard-course-link" href="#/Kanbas/Courses/1234/Home">CS6704.2023.86501 Fall_2024 Semester Full Term</a>
+                                  <a className="wd-dashboard-course-link" href="#/Kanbas/Courses/1234/Home">CS6704.2023.86501 Summer_2024 Semester Full Term</a>
                               </p>
                               <a href="#/Kanbas/Courses/1234/Home" className="btn btn-primary"> Go </a>
                           </div>
@@ -141,6 +141,26 @@ export default function Dashboard() {
                               </p>
                               <p className="wd-dashboard-course-title course-info">
                                   <a className="wd-dashboard-course-link" href="#/Kanbas/Courses/1234/Home">CS6540.2023.40567 Fall_2024 Semester Full Term</a>
+                              </p>
+                              <a href="#/Kanbas/Courses/1234/Home" className="btn btn-primary"> Go </a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className="wd-dashboard-course col" style={{width: "300px"}}>
+                      <div className="card">
+                          <img src="/images/reactjs.jpg" className="card-img-top" alt="bg img"/>
+                          <div className="card-body">
+                              <a className="wd-dashboard-course-link"
+                                 href="#/Kanbas/Courses/1234/Home"
+                                 style={{textDecoration: "none", color: "navy", fontWeight: "bold"}}>
+                                  CS7120 Unsupervised Learning
+                              </a>
+                              <p className="wd-dashboard-course-title card-text">
+                                  <a className="wd-dashboard-course-link" href="#/Kanbas/Courses/1234/Home">Machine Learning Algorithm</a>
+                              </p>
+                              <p className="wd-dashboard-course-title course-info">
+                                  <a className="wd-dashboard-course-link" href="#/Kanbas/Courses/1234/Home">CS7120.2023.95087 Summer_2024 Semester Full Term</a>
                               </p>
                               <a href="#/Kanbas/Courses/1234/Home" className="btn btn-primary"> Go </a>
                           </div>
