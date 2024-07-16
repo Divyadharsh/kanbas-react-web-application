@@ -5,11 +5,14 @@ import {Navigate, Route, Routes} from "react-router";
 import Assignments from "./Assignments"
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
+import { MdMenu } from "react-icons/md";
 
 export default function Courses() {
     return (
         <div id="wd-courses">
-            <h2>Course 1234</h2>
+            <h2>
+                <MdMenu />
+                Course 1234</h2>
             <hr/>
             <div className="d-flex">
                 <div className="d-none d-md-block">

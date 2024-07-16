@@ -34,7 +34,7 @@ export default function Assignments() {
                                 <b>Not available until</b> May 6 at 12:00am | <b>Due</b> May 13 at 11:59pm | 100 pts</p>
                         </div>
                         <div className="col float-end">
-                            <AssignmentControlButtons/>
+                            <LessonControlButtons/>
                         </div>
                     </div>
                 </li>
@@ -58,7 +58,7 @@ export default function Assignments() {
                                 11:59pm|100 pts</p>
                         </div>
                         <div className="col float-end">
-                            <AssignmentControlButtons/>
+                            <LessonControlButtons/>
                         </div>
                     </div>
                 </li>
@@ -82,7 +82,7 @@ export default function Assignments() {
                                 11:59pm|100 pts</p>
                         </div>
                         <div className="col float-end">
-                            <AssignmentControlButtons/>
+                            <LessonControlButtons/>
                         </div>
                     </div>
                 </li>

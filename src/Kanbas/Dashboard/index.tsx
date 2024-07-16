@@ -3,7 +3,7 @@ export default function Dashboard() {
       <div>
           <h1 id="wd-dashboard-title">Dashboard</h1>
           <hr/>
-          <h2 id="wd-dashboard-published">Published Courses (12)</h2>
+          <h2 id="wd-dashboard-published">Published Courses (8)</h2>
           <hr/>
           <div id="wd-dashboard-courses" className="row">
               <div className="row row-cols-1 row-cols-md-4 row-cols-lg-4 g-4">
