@@ -10,9 +10,9 @@ import { MdMenu } from "react-icons/md";
 export default function Courses() {
     return (
         <div id="wd-courses">
-            <h2>
-                <MdMenu />
-                Course 1234</h2>
+            <h2 style={{ color: 'red' }}>
+            <MdMenu />
+            Course 1234</h2>
             <hr/>
             <div className="d-flex">
                 <div className="d-none d-md-block">

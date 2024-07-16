@@ -1,8 +1,10 @@
 import React from "react";
-import {MdDoNotDisturbAlt, MdNotifications} from "react-icons/md";
-import {FaCheckCircle} from "react-icons/fa";
+import {MdDoNotDisturbAlt, MdNotifications, MdOutlineBroadcastOnHome} from "react-icons/md";
+import {FaCheckCircle,FaChartBar} from "react-icons/fa";
 import {BiImport} from "react-icons/bi";
 import {LiaFileImportSolid} from "react-icons/lia";
+import {CiBellOn} from "react-icons/ci";
+import {TfiAnnouncement} from "react-icons/tfi";
 import {BsHouseFill, BsLayoutTextSidebarReverse, BsMegaphone, BsReception4} from "react-icons/bs";
 
 export default function CourseStatus() {
@@ -33,23 +35,23 @@ export default function CourseStatus() {
                 Import from Commons
             </button>
             <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
-                <BsHouseFill className="me-2 fs-5"/>
+                <MdOutlineBroadcastOnHome className="me-2 fs-5"/>
                 Choose Home Page
             </button>
             <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
-                <BsLayoutTextSidebarReverse className="me-2 fs-5"/>
+                <FaChartBar className="me-2 fs-5"/>
                 View Course Screen
             </button>
             <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
-                <BsMegaphone  className="me-2 fs-5"/>
+                <TfiAnnouncement  className="me-2 fs-5"/>
                 New Announcement
             </button>
             <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
-                <BsReception4  className="me-2 fs-5"/>
+                <FaChartBar  className="me-2 fs-5"/>
                 New Analytics
             </button>
             <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
-                <MdNotifications className="me-2 fs-5"/>
+                <CiBellOn className="me-2 fs-5"/>
                 View Course Notifications
             </button>
         </div>

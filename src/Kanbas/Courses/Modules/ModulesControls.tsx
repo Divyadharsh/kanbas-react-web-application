@@ -1,6 +1,7 @@
 import { FaPlus } from "react-icons/fa6";
+import { MdDoNotDisturb } from "react-icons/md";
 import GreenCheckmark from "./GreenCheckmark";
-import GreyBanmark from "./GreyBanmark";
+import GreyBanmark from "./ModuleControlButtons";
 export default function ModulesControls() {
   return (
     <div id="wd-modules-controls" className="text-nowrap">
@@ -28,13 +29,13 @@ export default function ModulesControls() {
             </a>
           </li>
           <li>
-            <a id="wd-unpublish-all-modules-and-items" className="dropdown-item" href="#">
-              <GreyBanmark /> Unpublish all modules and items
+            <a id="wd-unpublish-all-modules-and-items" className="me-2 fs-5" href="#">
+              <MdDoNotDisturb /> Unpublish all modules and items
             </a>
             </li>
               <li>
-            <a id="wd-unpublish-modules-only" className="dropdown-item" href="#">
-              <GreyBanmark /> Unpublish modules only
+            <a id="wd-unpublish-modules-only" className="me-2 fs-5" href="#">
+              <MdDoNotDisturb /> Unpublish modules only
             </a>
             </li>
             </ul>
