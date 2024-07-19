@@ -197,7 +197,7 @@ export default function AssignmentEditor () {
                   id='wd-due-date'
                   className='form-control'
                   type='date'
-                  defaultValue='2024-05-13'
+                  defaultValue='2024-05-13, 11:59 PM'
                 />
               </div>
             </div>
@@ -211,7 +211,7 @@ export default function AssignmentEditor () {
                   id='wd-available-from'
                   className='form-control'
                   type='date'
-                  defaultValue='2024-05-06'
+                  defaultValue='2024-05-06, 12:00 AM'
                 />
               </div>
               <div className='col-md-6'>
@@ -222,7 +222,7 @@ export default function AssignmentEditor () {
                   id='wd-available-until'
                   className='form-control'
                   type='date'
-                  defaultValue='2024-05-20'
+                  defaultValue=' '
                 />
               </div>
             </div>

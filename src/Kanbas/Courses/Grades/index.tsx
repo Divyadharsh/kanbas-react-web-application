@@ -1,126 +1,152 @@
-import React from "react";
-import {BsFillGearFill, BsFunnel} from "react-icons/bs";
-import {BiImport} from "react-icons/bi";
-import {LiaFileImportSolid} from "react-icons/lia";
+import { FaFileImport, FaFileExport, FaSearch } from 'react-icons/fa'
+import { IoMdSettings } from 'react-icons/io'
+import { MdKeyboardArrowDown } from 'react-icons/md'
+import { BiFilterAlt } from 'react-icons/bi'
+import { LiaFileExportSolid } from 'react-icons/lia'
+import { useParams } from 'react-router-dom'
+import * as db from '../../Database'
 
-export default function Grades() {
-    return (
-        <div className="container">
-            <button className="btn btn-secondary float-end">
-                <BsFillGearFill  className="fs-5"/>
+export default function Grades () {
+  const { cid } = useParams()
+  const courseAssignments = db.assignments.filter(a => a.course === cid)
+  const courseEnrollments = db.enrollments.filter(e => e.course === cid)
+  const courseUsers = courseEnrollments.map(e =>
+    db.users.find(u => u._id === e.user)
+  )
+  const courseGrades = db.grades.filter(g =>
+    courseAssignments.some(a => a._id === g.assignment)
+  )
+
+  return (
+    <div className='container mt-5'>
+      <div className='d-flex justify-content-between align-items-center mb-3'>
+        <div className='d-flex flex-column'>
+          <label htmlFor='search-students' className='form-label'>
+            Student Names
+          </label>
+          <div className='input-group'>
+            <span className='input-group-text bg-white border-end-0'>
+              <FaSearch />
+            </span>
+            <input
+              id='search-students'
+              className='form-control'
+              type='text'
+              placeholder='Search Students'
+            />
+            <button className='btn btn-light me-2'>
+              <MdKeyboardArrowDown />
             </button>
-            <button className="btn btn-secondary float-end mx-2 dropdown-toggle">
-                <BiImport className="me-2 fs-5"/>
-                Export
-            </button>
-            <button className="btn btn-secondary float-end">
-                <LiaFileImportSolid className="me-2 fs-5"/>
-                Import
-            </button>
-            <br/>
-            <div className="row mt-4">
-                <div className="col">
-                    <label htmlFor="wd-student-names" className="form-label"><b>Student Names</b></label>
-                    <select id="wd-student-names" className="form-select">
-                        <option selected>Search Students</option>
-                    </select>
-                </div>
-                <div className="col">
-                    <label htmlFor="wd-assignment-names" className="form-label"><b>Assignment Names</b></label>
-                    <select id="wd-assignment-names" className="form-select">
-                        <option selected>Search Assignments</option>
-                    </select>
-                </div>
-            </div>
-            <div className="row my-3 row-cols-auto">
-                <button className="btn btn-secondary ms-2">
-                    <BsFunnel className="me-2"/>
-                    Apply Filters
-                </button>
-            </div>
-            <div className="row my-3">
-                <div className="table-responsive">
-                    <table className="table table-striped table-bordered align-middle">
-                        <thead>
-                        <tr>
-                            <th scope="col" className="fs-6 fw-normal" style={{width: "20%"}}>Student Name</th>
-                            <th scope="col" className="fs-6 fw-normal text-center" style={{width: "20%"}}>
-                                A1 SETUP<br/>
-                                Out of 100
-                            </th>
-                            <th scope="col" className="fs-6 fw-normal text-center" style={{width: "20%"}}>
-                                A2 HTML<br/>
-                                Out of 100
-                            </th>
-                            <th scope="col" className="fs-6 fw-normal text-center" style={{width: "20%"}}>
-                                A3 CSS<br/>
-                                Out of 100
-                            </th>
-                            <th scope="col" className="fs-6 fw-normal text-center" style={{width: "20%"}}>
-                                A4 BOOTSTRAP<br/>
-                                Out of 100
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row" className="text-danger">Divyadharshini</th>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">
-                                <input type="percentile" value="100%" className="form-control text-center"/>
-                            </td>
-                            <td className="text-center">100%</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" className="text-danger">Alex Nyugen</th>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">
-                                <input type="percentile" value="100%" className="form-control text-center"/>
-                            </td>
-                            <td className="text-center">100%</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" className="text-danger">Sameer</th>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">
-                                <input type="percentile" value="100%" className="form-control text-center"/>
-                            </td>
-                            <td className="text-center">100%</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" className="text-danger">Nikhil</th>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">
-                                <input type="percentile" value="100%" className="form-control text-center"/>
-                            </td>
-                            <td className="text-center">100%</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" className="text-danger">Manoj Kolli</th>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">
-                                <input type="percentile" value="100%" className="form-control text-center"/>
-                            </td>
-                            <td className="text-center">100%</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" className="text-danger">Sri Akshaya</th>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">100%</td>
-                            <td className="text-center">
-                                <input type="percentile" value="100%" className="form-control text-center"/>
-                            </td>
-                            <td className="text-center">100%</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+          </div>
         </div>
-    );
+        <div className='d-flex flex-column'>
+          <label htmlFor='search-assignments' className='form-label'>
+            Assignment Names
+          </label>
+          <div className='input-group'>
+            <span className='input-group-text bg-white border-end-0'>
+              <FaSearch />
+            </span>
+
+            <input
+              id='search-assignments'
+              className='form-control'
+              type='text'
+              placeholder='Search Assignments'
+            />
+            <button className='btn btn-light me-2'>
+              <MdKeyboardArrowDown />
+            </button>
+          </div>
+        </div>
+        <div className='d-flex'>
+          <button className='btn btn-light me-2'>
+            <FaFileImport /> Import
+          </button>
+          <div className='btn-group'>
+            <button
+              className='btn btn-light me-2 dropdown-toggle'
+              data-bs-toggle='dropdown'
+              aria-expanded='false'
+            >
+              <FaFileExport /> Export
+            </button>
+            <ul className='dropdown-menu'>
+              <li>
+                <a className='dropdown-item' href='#'>
+                  Export Option 1
+                </a>
+              </li>
+              <li>
+                <a className='dropdown-item' href='#'>
+                  Export Option 2
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className='btn-group'>
+            <button className='btn btn-light me-2'>
+              <IoMdSettings />
+            </button>
+
+            <ul className='dropdown-menu'>
+              <li>
+                <a className='dropdown-item' href='#'>
+                  Export Option 1
+                </a>
+              </li>
+              <li>
+                <a className='dropdown-item' href='#'>
+                  Export Option 2
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          className='btn btn-light me-2
+'
+        >
+          <BiFilterAlt />
+          Apply Filter
+        </button>
+      </div>
+
+      <div className='table-responsive'>
+        <table className='table table-striped'>
+          <thead>
+            <tr className='table-light'>
+              <th>Student Name</th>
+              {courseAssignments.map(a => (
+                <th key={a._id}>
+                  {a.title} <br /> Out of 100
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {courseUsers.map(user => (
+              <tr key={user?._id}>
+                <td className='text-danger'>
+                  {user?.firstName} {user?.lastName}
+                </td>
+                {courseAssignments.map(a => {
+                  const grade = courseGrades.find(
+                    g => g.student === user?._id && g.assignment === a._id
+                  )
+                  return (
+                    <td key={a._id}>{grade ? `${grade.grade}%` : 'N/A'}</td>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
 }
