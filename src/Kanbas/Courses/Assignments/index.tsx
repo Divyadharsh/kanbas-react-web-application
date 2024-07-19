@@ -1,97 +1,54 @@
-import { BsGripVertical, BsPlus } from 'react-icons/bs'
-import { FaCheckCircle, FaCircle, FaPlus, FaSearch } from 'react-icons/fa'
-import { IoEllipsisVertical } from 'react-icons/io5'
-import { VscNotebook } from 'react-icons/vsc'
-import * as db from '../../Database'
-import { useParams } from 'react-router'
-
-import './styles.css'
-export default function Assignments () {
-  const { cid } = useParams()
-  const assignments = db.assignments.filter(
-    assignment => assignment.course === cid
-  )
-
-  const getAssignmentName = (id: any) => {
-    const assignmnetprefix = id[0] 
-    const assignmentsuffix = id[id.length - 1] 
-    return `${assignmnetprefix}${assignmentsuffix}`
-  }
-
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { assignments } from "../../Database";
+import { BsGripVertical } from "react-icons/bs"
+import { IoMdArrowDropdown } from "react-icons/io";
+import { FaPlus } from "react-icons/fa6";
+import { IoEllipsisVertical } from "react-icons/io5";
+import { FaRegEdit } from "react-icons/fa";
+import AssignmentsControls from "./AssignmentControls";
+import AssignmentControlButtons from "./AssignmentControlButtons";
+export default function Assignments() {
+  const { cid } = useParams();
+  const courseAssignments = assignments.filter(assignment => assignment.course === cid);
   return (
-    <div id='wd-assignments' className='container'>
-      <div className='d-flex justify-content-between align-items-center mb-3'>
-        <div className='input-group w-50'>
-          <span className='input-group-text bg-white border-end-0'>
-            <FaSearch />
-          </span>
-          <input
-            id='wd-search-assignment'
-            className='form-control border-start-0'
-            placeholder='Search for Assignments'
-          />
+    <div id="wd-assignments">
+      <AssignmentsControls />
+      <ul id="wd-assignments" className="list-group rounded-0 my-2">
+        <div className="wd-title p-3 ps-2 bg-secondary">
+          <BsGripVertical className="fs-4" />
+          <IoMdArrowDropdown className="mx-2" />
+          <b>ASSIGNMENTS</b>
+          <IoEllipsisVertical className="float-end mt-1"/>
+          <FaPlus className="float-end text-secondary mx-2 mt-1" />
+          <span className="badge rounded-pill float-end text-dark border border-secondary">40% of Total</span>
         </div>
-        <div className='d-flex'>
-          <button id='wd-add-assignment-group' className='btn btn-light me-2'>
-            <FaPlus className='me-1' />
-            Group
-          </button>
-          <button id='wd-add-assignment' className='btn btn-danger'>
-            <FaPlus className='me-1' />
-            Assignment
-          </button>
-        </div>
-      </div>
-
-      <li className='list-group-item p-0 mb-5 fs-5 border-gray'>
-        <h3 id='wd-assignments-title' className=' bg-light p-3 ps-2'>
-          <BsGripVertical className='me-2 fs-3' />
-          ASSIGNMENTS
-          <div className='d-flex float-end'>
-            <button className='percentage-badge border-gray float-end'>
-              40% of Total
-            </button>
-            <BsPlus
-              className='fs-2 position-relative'
-              style={{ bottom: '1px' }}
-            />
-            <IoEllipsisVertical className='fs-4' />
-          </div>
-        </h3>
-
-        <ul id='wd-assignment-list' className='list-group rounded-0'>
-          {assignments.map(assignment => (
-            <li
-              key={assignment._id}
-              className='wd-assignment-list-item list-group-item p-3 ps-1'
-            >
-              <div className='d-flex align-items-center'>
-                <div className='icons-wrapper'>
-                  <BsGripVertical className='me-2 fs-3 icon-color' />
-                  <VscNotebook className='me-2 fs-5 icon-color' />
+        <ul id="wd-assignment-list" className="list-group rounded-0">
+          {courseAssignments.map(assignment => (
+            <li className="wd-assignment-list-item list-group-item p-3" style={{borderLeft: "5px solid green"}}>
+              <div className="row align-items-center">
+                <div className="col-1">
+                  <BsGripVertical className="fs-4" />
                 </div>
-                <div className='flex-grow-1'>
-                  <a
-                    className='wd-assignment-link text-green no-underline'
-                    href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
-                  >
-                    <strong>{getAssignmentName(assignment._id)}</strong>
-                  </a>
-                  <br />
-                  <span className='wd-assignment-details'>
-                    <span className='text-danger'>Multiple Modules</span> |{' '}
-                    <strong>Not available until</strong> May 6 at 12:00am |
-                    <br />
-                    <strong>Due</strong> May 13 at 11:59pm | 100 pts
-                  </span>
+                <div className="col-1">
+                  <FaRegEdit className="text-success" />
                 </div>
-                <FaCheckCircle className='text-success me-2' />
-                <IoEllipsisVertical className='fs-5' />
+                <div className="col">
+                  <Link className="wd-assignment-link text-dark link-underline link-underline-opacity-0"
+                    key={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                    to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
+                    <h5><b>{assignment._id} - {assignment.title}</b></h5>
+                  </Link>
+                  <p><span className="text-danger">Multiple Modules</span> | <b>Not available until</b> {assignment.available_from} at 12:00am | <b>Due</b> {assignment.due_date} at 11:59pm | {assignment.points} pts</p>
+                </div>
+                <div className="col float-end">
+                  <AssignmentControlButtons />
+                </div>
               </div>
             </li>
           ))}
         </ul>
-      </li>
+      </ul>
     </div>
-  )
+  );
 }
