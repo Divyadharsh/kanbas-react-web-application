@@ -7,7 +7,7 @@ Please
 to get dummy text
 <br/>
 <h4>My GitHub repository</h4>
-<a href="https://github.com/Divyadharsh/Kanbas-react-web-app">
+<a href="https://github.com/Divyadharsh/kanbas-react-web-application">
     GitHub
 </a>
 
