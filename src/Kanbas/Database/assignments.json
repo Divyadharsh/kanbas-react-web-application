@@ -3,7 +3,7 @@
       "_id": "A101",
       "title": "Propulsion Assignment",
       "course": "RS101",
-      "description": "This assignment is available online.",
+      "description": "<div id='wd-description' className=''>\n      <strong>\n        The assignment is{' '}\n        <span className='text-danger'>available online</span>\n      </strong>\n      <p>\n        Submit a link to the landing page of your Web application running on\n        Netlify. The landing page should include the following:\n      </p>\n      <ul>\n        <li>Your full name and section</li>\n        <li>Links to each of the lab assignments</li>\n        <li>Link to the Kanbas application</li>\n        <li>Links to all relevant source code repositories</li>\n      </ul>\n      <p>\n        The Kanbas application should include a link to navigate back to the\n        landing page.\n      </p>\n    </div>",
       "points": 100,
       "due_date": "2024-12-12",
       "available_from": "2024-12-01",
