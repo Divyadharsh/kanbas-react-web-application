@@ -39,7 +39,12 @@ export default function Assignments() {
                     to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
                     <h5><b>{assignment._id}</b></h5>
                   </Link>
-                  <p><span className="text-danger">Multiple Modules</span> | <b>Not available until</b> {assignment.available_from} at 12:00am | <b>Due</b> {assignment.due_date} at 11:59pm | {assignment.points} pts</p>
+                  <p>
+                  <span className='text-danger'>Multiple Modules</span> |{' '}
+                    <strong>Not available until</strong> May 6 at 12:00am |
+                    <br />
+                    <strong>Due</strong> May 13 at 11:59pm | 100 pts
+  </p>
                 </div>
                 <div className="col float-end">
                   <AssignmentControlButtons />
