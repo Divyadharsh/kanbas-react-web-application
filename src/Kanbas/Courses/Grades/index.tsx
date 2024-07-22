@@ -123,7 +123,7 @@ export default function Grades () {
               <th>Student Name</th>
               {courseAssignments.map(a => (
                 <th key={a._id}>
-                  {a.title} <br /> Out of 100
+                  <br /> Out of 100
                 </th>
               ))}
             </tr>

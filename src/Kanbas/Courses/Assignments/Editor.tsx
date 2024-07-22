@@ -9,7 +9,7 @@ export default function AssignmentEditor() {
       <div className="container">
         <div className="row my-3">
           <label htmlFor="wd-name" className="form-label">Assignment Name</label>
-          <input id="wd-name" type="text" className="form-control" value={`${assignment?._id} - ${assignment?.title}`} />
+          <input id="wd-name" type="text" className="form-control" value={`${assignment?._id}`} />
         </div>
         <div className="row my-3">
           <textarea id="wd-description" className="form-control" rows={10}>{assignment?.description}</textarea>

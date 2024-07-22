@@ -37,7 +37,7 @@ export default function Assignments() {
                   <Link className="wd-assignment-link text-dark link-underline link-underline-opacity-0"
                     key={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                     to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
-                    <h5><b>{assignment._id} - {assignment.title}</b></h5>
+                    <h5><b>{assignment._id}</b></h5>
                   </Link>
                   <p><span className="text-danger">Multiple Modules</span> | <b>Not available until</b> {assignment.available_from} at 12:00am | <b>Due</b> {assignment.due_date} at 11:59pm | {assignment.points} pts</p>
                 </div>
