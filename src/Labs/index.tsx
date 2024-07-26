@@ -4,11 +4,13 @@ import TOC from "./TOC";
 import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
 import Lab4 from "./Lab4";
-
+import { Provider } from "react-redux";
+import store from "./store";
 
 
 export default function Labs() {
   return (
+    <Provider store={store}>
     <div>
       <h1>Divyadharshini Muruganandham</h1>
       <h1>Labs</h1>
@@ -25,5 +27,6 @@ export default function Labs() {
 </a>
     
     </div>
+    </Provider>
   );
 }
