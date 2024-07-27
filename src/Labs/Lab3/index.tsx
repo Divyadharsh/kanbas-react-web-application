@@ -97,9 +97,6 @@ export default function Lab3() {
      <AddPathParameters/>
      <PathParameters/>
 
-
-
-
     </div>
   );
 }
