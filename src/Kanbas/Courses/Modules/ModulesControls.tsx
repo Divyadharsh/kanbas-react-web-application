@@ -8,8 +8,6 @@ export default function ModulesControls({
 
    moduleName, setModuleName, addModule }:
   { moduleName: string; setModuleName: (title: string) => void; addModule: () => void; }) {
-
-
   
   return (
     <div id="wd-modules-controls" className="text-nowrap">

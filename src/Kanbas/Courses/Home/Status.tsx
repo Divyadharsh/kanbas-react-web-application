@@ -5,7 +5,6 @@ import {BiImport} from "react-icons/bi";
 import {LiaFileImportSolid} from "react-icons/lia";
 import {CiBellOn} from "react-icons/ci";
 import {TfiAnnouncement} from "react-icons/tfi";
-import {BsHouseFill, BsLayoutTextSidebarReverse, BsMegaphone, BsReception4} from "react-icons/bs";
 
 export default function CourseStatus() {
     return (

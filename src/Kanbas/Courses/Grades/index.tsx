@@ -108,9 +108,7 @@ export default function Grades () {
 
       <div>
         <button
-          className='btn btn-light me-2
-'
-        >
+          className='btn btn-light me-2'>
           <BiFilterAlt />
           Apply Filter
         </button>

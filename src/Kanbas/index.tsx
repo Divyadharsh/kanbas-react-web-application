@@ -1,17 +1,16 @@
-import KanbasNavigation from "./Navigation";
-import { Routes, Route, Navigate } from "react-router-dom";
-import Dashboard from "./Dashboard";
-import Courses from "./Courses";
-import * as db from "./Database";
-import { useState } from "react";
+import React, { useState } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
-
-
+import Dashboard from "./Dashboard";
+import KanbasNavigation from "./Navigation";
+import { Routes, Route, Navigate } from "react-router";
+import Courses from "./Courses";
+import "./styles.css";
+import * as db from "./Database";
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>(db.courses);
   const [course, setCourse] = useState<any>({
-    _id: "1234", name: "New Course", number: "New Number",
+    _id: "1234", name: "New Course", number: "New Number", image: "NEU.png",
     startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
   });
   const addNewCourse = () => {
@@ -31,6 +30,7 @@ export default function Kanbas() {
       })
     );
   };
+
   return (
     <Provider store={store}>
       <div id="wd-kanbas" className="h-100">
@@ -59,6 +59,5 @@ export default function Kanbas() {
         </div>
       </div>
     </Provider>
-    );
-  }
-
+  );
+}

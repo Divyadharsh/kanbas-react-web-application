@@ -1,4 +1,3 @@
-import React from "react";
 export default function RemoveAssignment({assignmentId, deleteAssignment}: {assignmentId: string, deleteAssignment: (assignmentId: string) => void}) {
   return (
     <div id={`wd-delete-assignment-${assignmentId}-dialog`} className="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
