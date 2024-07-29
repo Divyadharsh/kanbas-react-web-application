@@ -1,7 +1,6 @@
 import { FaPlus } from "react-icons/fa6";
 import { MdDoNotDisturb } from "react-icons/md";
 import GreenCheckmark from "./GreenCheckmark";
-import GreyBanmark from "./ModuleControlButtons";
 import ModuleEditor from "./ModuleEditor";
 
 export default function ModulesControls({

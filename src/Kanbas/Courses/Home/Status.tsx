@@ -1,4 +1,3 @@
-import React from "react";
 import {MdDoNotDisturbAlt, MdNotifications, MdOutlineBroadcastOnHome} from "react-icons/md";
 import {FaCheckCircle,FaChartBar} from "react-icons/fa";
 import {BiImport} from "react-icons/bi";

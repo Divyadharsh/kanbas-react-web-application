@@ -7,7 +7,9 @@ import { Routes, Route, Navigate } from "react-router";
 import Courses from "./Courses";
 import "./style.css";
 import * as db from "./Database";
+
 export default function Kanbas() {
+  
   const [courses, setCourses] = useState<any[]>(db.courses);
   const [course, setCourse] = useState<any>({
     _id: "1234", name: "New Course", number: "New Number", image: "NEU.png",
