@@ -1,173 +1,56 @@
-import React, { useState } from 'react'
-import { BsGripVertical, BsPlus } from 'react-icons/bs'
-import { FaCheckCircle, FaPlus, FaSearch, FaTrash } from 'react-icons/fa'
-import { IoEllipsisVertical } from 'react-icons/io5'
-import { VscNotebook } from 'react-icons/vsc'
-import { useParams, Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteAssignment } from './reducer'
-import './styles.css'
-
-export default function Assignments () {
-  const { cid } = useParams()
-  const assignments = useSelector((state: any) =>
-    state.assignmentsReducer.assignments.filter(
-      (assignment: any) => assignment.course === cid
-    )
-  )
-  const dispatch = useDispatch()
-
-  const [showModal, setShowModal] = useState(false)
-  const [selectedAssignmentId, setSelectedAssignmentId] = useState(null)
-
-  const handleDeleteClick = (assignmentId: any) => {
-    setSelectedAssignmentId(assignmentId)
-    setShowModal(true)
-  }
-
-  const handleDeleteConfirm = () => {
-    if (selectedAssignmentId) {
-      dispatch(deleteAssignment(selectedAssignmentId))
-      setShowModal(false)
-      setSelectedAssignmentId(null)
-    }
-  }
-
-  const handleDeleteCancel = () => {
-    setShowModal(false)
-    setSelectedAssignmentId(null)
-  }
-
-  const defaultDate = new Date().toISOString().split('T')[0]
-
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { BsGripVertical } from "react-icons/bs"
+import { IoMdArrowDropdown } from "react-icons/io";
+import { FaPlus } from "react-icons/fa6";
+import { IoEllipsisVertical } from "react-icons/io5";
+import { FaRegEdit } from "react-icons/fa";
+import AssignmentsControls from "./AssignmentControls";
+import AssignmentControlButtons from "./AssignmentControlButtons";
+import { deleteAssignment } from "./reducer";
+import { useSelector, useDispatch } from "react-redux";
+export default function Assignments() {
+  const { cid } = useParams();
+  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+  const dispatch = useDispatch();
   return (
-    <div id='wd-assignments' className='container'>
-      <div className='d-flex justify-content-between align-items-center mb-3'>
-        <div className='input-group w-50'>
-          <span className='input-group-text bg-white border-end-0'>
-            <FaSearch />
-          </span>
-          <input
-            id='wd-search-assignment'
-            className='form-control border-start-0'
-            placeholder='Search for Assignments'
-          />
+    <div id="wd-assignments">
+      <AssignmentsControls cid={cid!}/>
+      <ul id="wd-assignments" className="list-group rounded-0 my-2">
+        <div className="wd-title p-3 ps-2 bg-secondary">
+          <BsGripVertical className="fs-4" />
+          <IoMdArrowDropdown className="mx-2" />
+          <b>ASSIGNMENTS</b>
+          <IoEllipsisVertical className="float-end mt-1"/>
+          <FaPlus className="float-end text-secondary mx-2 mt-1" />
+          <span className="badge rounded-pill float-end text-dark border border-secondary">40% of Total</span>
         </div>
-        <div className='d-flex'>
-          <button id='wd-add-assignment-group' className='btn btn-light me-2'>
-            <FaPlus className='me-1' />
-            Group
-          </button>
-          <Link
-            to={`/Kanbas/Courses/${cid}/Assignments/New`}
-            className='btn btn-danger'
-          >
-            <FaPlus className='me-1' />
-            Assignment
-          </Link>
-        </div>
-      </div>
-
-      <li className='list-group-item p-0 mb-5 fs-5 border-gray'>
-        <h3 id='wd-assignments-title' className='bg-light p-3 ps-2'>
-          <BsGripVertical className='me-2 fs-3' />
-          ASSIGNMENTS
-          <div className='d-flex float-end'>
-            <button className='percentage-badge border-gray float-end'>
-              40% of Total
-            </button>
-            <BsPlus
-              className='fs-2 position-relative'
-              style={{ bottom: '1px' }}
-            />
-            <IoEllipsisVertical className='fs-4' />
-          </div>
-        </h3>
-
-        <ul id='wd-assignment-list' className='list-group rounded-0'>
-          {assignments
-            .filter((assignment: any) => assignment.course === cid)
-            .map((assignment: any) => (
-              <li
-                key={assignment._id}
-                className='wd-assignment-list-item list-group-item p-3 ps-1'
-              >
-                <div className='d-flex align-items-center'>
-                  <div className='icons-wrapper'>
-                    <BsGripVertical className='me-2 fs-3 icon-color' />
-                    <VscNotebook className='me-2 fs-5 icon-color' />
-                  </div>
-                  <div className='flex-grow-1'>
-                    <Link
-                      className='wd-assignment-link text-green no-underline'
-                      to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
-                    >
-                      <strong>{assignment.title}</strong>
-                    </Link>
-                    <br />
-                    <span className='wd-assignment-details'>
-                      <span className='text-danger'>Multiple Modules</span> |
-                      <strong> Not available until </strong>{' '}
-                      {assignment.availableFrom || defaultDate} |
-                      <br />
-                      <strong> Due</strong> {assignment.dueDate || defaultDate}{' '}
-                      | {assignment.points || 'No'} pts
-                    </span>
-                  </div>
-                  <FaCheckCircle className='text-success me-2' />
-                  <FaTrash
-                    className='text-danger me-2'
-                    onClick={() => handleDeleteClick(assignment._id)}
-                  />
-                  <IoEllipsisVertical className='fs-5' />
+        <ul id="wd-assignment-list" className="list-group rounded-0">
+          {assignments.filter((assignment: any) => assignment.course === cid).map((assignment: any) => (
+            <li className="wd-assignment-list-item list-group-item p-3" style={{borderLeft: "5px solid green"}}>
+              <div className="row align-items-center">
+                <div className="col-1">
+                  <BsGripVertical className="fs-4" />
                 </div>
-              </li>
-            ))}
+                <div className="col-1">
+                  <FaRegEdit className="text-success" />
+                </div>
+                <div className="col">
+                  <Link className="wd-assignment-link text-dark link-underline link-underline-opacity-0"
+                    key={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                    to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
+                    <h5><b>{assignment._id} - {assignment.title}</b></h5>
+                  </Link>
+                  <p><span className="text-danger">Multiple Modules</span> | <b>Not available until</b> {assignment.available_from} at 12:00am | <b>Due</b> {assignment.due_date} at 11:59pm | {assignment.points} pts</p>
+                </div>
+                <div className="col float-end">
+                  <AssignmentControlButtons assignmentId={assignment._id} deleteAssignment={assignmentId => dispatch(deleteAssignment(assignmentId))} />
+                </div>
+              </div>
+            </li>
+          ))}
         </ul>
-      </li>
-
-      {/* Delete Confirmation Modal */}
-      {showModal && <div className='modal-backdrop fade show'></div>}
-      <div
-        id='wd-delete-assignment-modal'
-        className={`modal fade ${showModal ? 'show d-block' : ''}`}
-        role='dialog'
-        style={{ display: showModal ? 'block' : 'none' }}
-      >
-        <div className='modal-dialog'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h5 className='modal-title fs-5' id='staticBackdropLabel'>
-                Delete Assignment
-              </h5>
-              <button
-                type='button'
-                className='btn-close'
-                onClick={handleDeleteCancel}
-              ></button>
-            </div>
-            <div className='modal-body'>
-              <p>Are you sure you want to delete this assignment?</p>
-            </div>
-            <div className='modal-footer'>
-              <button
-                type='button'
-                className='btn btn-secondary'
-                onClick={handleDeleteCancel}
-              >
-                Cancel
-              </button>
-              <button
-                type='button'
-                className='btn btn-danger'
-                onClick={handleDeleteConfirm}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </ul>
     </div>
-  )
+  );
 }
