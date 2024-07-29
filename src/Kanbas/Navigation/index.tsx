@@ -26,11 +26,9 @@ export default function KanbasNavigation () {
         id='wd-neu-link'
         target='_blank'
         href='https://www.northeastern.edu/'
-        className='list-group-item bg-black border-0'
-      >
+        className='list-group-item bg-black border-0'>
         <img src='/images/neu.jpg' width='75px' />
       </a>
-
       <Link
         key='/Kanbas/Account'
         to='/Kanbas/Account'
@@ -39,8 +37,7 @@ export default function KanbasNavigation () {
               pathname.includes('Account')
                 ? 'bg-white text-danger'
                 : 'bg-black text-white'
-            }`}
-      >
+            }`} >
         <FaRegCircleUser
           className={`fs-1 ${
             pathname.includes('Account') ? 'text-danger' : 'text-white'
@@ -49,10 +46,10 @@ export default function KanbasNavigation () {
         <br />
         Account
       </Link>
-
       {links.map((link) => (
-        <Link key={`${link.label}-${link.path}`} to={link.path} className={`list-group-item bg-black text-center border-0
-              ${pathname.includes(link.label) ? "text-danger bg-white" : "text-white bg-black"}`}>
+        <Link key={`${link.label}-${link.path}`} 
+        to={link.path} 
+        className={`list-group-item bg-black text-center border-0 ${pathname.includes(link.label) ? "text-danger bg-white" : "text-white bg-black"}`}>
           {link.icon({ className: "fs-1 text-danger"})}
           <br />
           {link.label}

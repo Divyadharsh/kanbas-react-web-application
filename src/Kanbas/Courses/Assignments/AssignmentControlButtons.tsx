@@ -2,6 +2,7 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "./GreenCheckmark";
 import { FaTrash } from 'react-icons/fa';
 import RemoveAssignment from './RemoveAssignment';
+
 export default function AssignmentControlButtons({assignmentId, deleteAssignment}: {assignmentId: string, deleteAssignment: (assignmentId: string) => void}) {
   return (
     <div className="float-end">
