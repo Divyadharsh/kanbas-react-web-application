@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
 import { Routes, Route, Navigate } from "react-router";
 import Courses from "./Courses";
-import "./styles.css";
+import "./style.css";
 import * as db from "./Database";
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>(db.courses);
