@@ -41,10 +41,13 @@ export default function Assignments() {
                     to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
                     <h5><b>{assignment._id} {assignment.title}</b></h5>
                   </Link>
-                  <p><span className="text-danger">Multiple Modules</span> | <b>Not available until</b> {assignment.available_from} at 12:00am | <b>Due</b> {assignment.due_date} at 11:59pm | {assignment.points} pts</p>
+                  <p><span className="text-danger">Multiple Modules</span> | <b>Not available until</b> 
+                  {assignment.available_from} at 12:00am | <b>Due</b> {assignment.due_date} at 11:59pm | 
+                  {assignment.points} pts</p>
                 </div>
                 <div className="col float-end">
-                  <AssignmentControlButtons assignmentId={assignment._id} deleteAssignment={assignmentId => dispatch(deleteAssignment(assignmentId))} />
+                  <AssignmentControlButtons assignmentId={assignment._id} 
+                  deleteAssignment={assignmentId => dispatch(deleteAssignment(assignmentId))} />
                 </div>
               </div>
             </li>
