@@ -1,7 +1,7 @@
 import React from "react";
 import {FaPlus} from "react-icons/fa6";
 
-export default function AssignmentsControls() {
+export default function AssignmentsControls({cid}: {cid: string}) {
     return (
         <div id="wd-modules-controls" className="text-nowrap">
             <div className="row">
