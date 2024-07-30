@@ -121,22 +121,22 @@ export default function AssignmentEditor() {
                 <div className="row">
                   <label htmlFor="wd-assign-to" className="form-label"><b>Assign to</b></label>
                   <div className="input-group">
-                    <button className="btn btn-outline-secondary">Every one X</button>
+                    <button className="btn btn-outline-secondary">Every one</button>
                     <input id="wd-assign-to" type="text" className="form-control" />
                   </div>
                 </div>
                 <div className="row mt-4">
                   <label htmlFor="wd-due-date"><b>Due</b></label>
-                  <input id="wd-due-date" type="date" className="form-control" value={assignmentDueDate} onChange={e => setAssignmentDueDate(e.target.value)} />
+                  <input id="wd-due-date" type="datetime-local" className="form-control" value={assignmentDueDate} onChange={e => setAssignmentDueDate(e.target.value)} />
                 </div>
                 <div className="row my-2">
                   <div className="col">
                     <label htmlFor="wd-available-from"><b>Available from</b></label>
-                    <input id="wd-available-from" type="date" className="form-control" value={assignmentAvailableFrom} onChange={e => setAssignmentAvailableFrom(e.target.value)} />
+                    <input id="wd-available-from" type="datetime-local" className="form-control" value={assignmentAvailableFrom} onChange={e => setAssignmentAvailableFrom(e.target.value)} />
                   </div>
                   <div className="col">
                     <label htmlFor="wd-available-until"><b>Until</b></label>
-                    <input id="wd-available-until" type="date" className="form-control" value={assignmentAvailableUntil} onChange={e => setAssignmentAvailableUntil(e.target.value)} />
+                    <input id="wd-available-until" type="datetime-local" className="form-control" value={assignmentAvailableUntil} onChange={e => setAssignmentAvailableUntil(e.target.value)} />
                   </div>
                 </div>
               </div>
