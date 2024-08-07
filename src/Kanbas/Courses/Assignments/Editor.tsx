@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { addAssignment, updateAssignment } from "./reducer";
+import * as client from "./client";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
-  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const dispatch = useDispatch();
-  let assignment = {
+  const [assignment, setAssignment] = useState({
     title: "New Assignment",
     description: "New Assignment Description",
     points: 100,
@@ -15,32 +15,40 @@ export default function AssignmentEditor() {
     available_from: "2024-01-01",
     available_until: "2024-01-01",
     course: cid,
-  };
-  if (aid !== "new") {
-    assignment = assignments.find((a: any) => a._id === aid);
+  });
+  const fetchAssignment = async () => {
+    const asg = await client.getAssignment(aid as string)
+    setAssignment(asg);
   }
-  const [assignmentName, setAssignmentName] = useState(assignment.title)
-  const [assignmentDescription, setAssignmentDescription] = useState(assignment.description)
-  const [assignmentPoints, setAssignmentPoints] = useState(assignment.points)
-  const [assignmentDueDate, setAssignmentDueDate] = useState(assignment.due_date)
-  const [assignmentAvailableFrom, setAssignmentAvailableFrom] = useState(assignment.available_from)
-  const [assignmentAvailableUntil, setAssignmentAvailableUntil] = useState(assignment.available_until)
+  const createAssignment = async (assignment: any) => {
+    const newAssignment = await client.createAssignment(cid!, assignment);
+    dispatch(addAssignment(newAssignment));
+  }
+  const saveAssignment = async (assignment: any) => {
+    const status = await client.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  }
+  useEffect(() => {
+    if (aid != "new") {
+      fetchAssignment();
+    }
+  }, [])
   return (
     <div id="wd-assignments-editor">
       <div className="container">
-        <div className="row my-3">
+      <div className="row my-3">
           <label htmlFor="wd-name" className="form-label">Assignment Name</label>
-          <input id="wd-name" type="text" className="form-control" value={assignmentName} onChange={e => setAssignmentName(e.target.value)} />
+          <input id="wd-name" type="text" className="form-control" value={assignment.title} onChange={e => setAssignment({...assignment, title: e.target.value})} />
         </div>
         <div className="row my-3">
-          <textarea id="wd-description" className="form-control" rows={10} onChange={e => setAssignmentDescription(e.target.value)}>{assignmentDescription}</textarea>
+          <textarea id="wd-description" className="form-control" rows={10} onChange={e => setAssignment({...assignment, description: e.target.value})}>{assignment.description}</textarea>
         </div>
         <div className="row my-3">
           <div className="col-3">
             <label htmlFor="wd-points" className="col-form-label float-end">Points</label>
           </div>
           <div className="col">
-            <input id="wd-points" type="number" className="form-control" value={assignmentPoints} onChange={e => setAssignmentPoints(+e.target.value)} />
+            <input id="wd-points" type="number" className="form-control" value={assignment.points} onChange={e => setAssignment({...assignment, points: +e.target.value})} />
           </div>
         </div>
         <div className="row my-3">
@@ -127,16 +135,16 @@ export default function AssignmentEditor() {
                 </div>
                 <div className="row mt-4">
                   <label htmlFor="wd-due-date"><b>Due</b></label>
-                  <input id="wd-due-date" type="datetime-local" className="form-control" value={assignmentDueDate} onChange={e => setAssignmentDueDate(e.target.value)} />
+                  <input id="wd-due-date" type="date" className="form-control" value={assignment.due_date} onChange={e => setAssignment({...assignment, due_date: e.target.value})} />
                 </div>
                 <div className="row my-2">
                   <div className="col">
                     <label htmlFor="wd-available-from"><b>Available from</b></label>
-                    <input id="wd-available-from" type="datetime-local" className="form-control" value={assignmentAvailableFrom} onChange={e => setAssignmentAvailableFrom(e.target.value)} />
+                    <input id="wd-available-from" type="date" className="form-control" value={assignment.available_from} onChange={e => setAssignment({...assignment, available_from: e.target.value})} />
                   </div>
                   <div className="col">
                     <label htmlFor="wd-available-until"><b>Until</b></label>
-                    <input id="wd-available-until" type="datetime-local" className="form-control" value={assignmentAvailableUntil} onChange={e => setAssignmentAvailableUntil(e.target.value)} />
+                    <input id="wd-available-until" type="date" className="form-control" value={assignment.available_until} onChange={e => setAssignment({...assignment, available_until: e.target.value})} />
                   </div>
                 </div>
               </div>
@@ -147,23 +155,14 @@ export default function AssignmentEditor() {
           <hr />
         </div>
         <Link key="save" to={`/Kanbas/Courses/${cid}/Assignments/`} className="btn btn-danger float-end ms-2" onClick={() => {
-          let lastestAssignment = {
-            ...assignment,
-            title: assignmentName,
-            description: assignmentDescription,
-            points: assignmentPoints,
-            due_date: assignmentDueDate,
-            available_from: assignmentAvailableFrom,
-            available_until: assignmentAvailableUntil,
-          };
           if (aid !== "new") {
-            dispatch(updateAssignment(lastestAssignment))
+            saveAssignment(assignment)
           } else {
-            dispatch(addAssignment(lastestAssignment))
+            createAssignment(assignment)
           }
         }}>Save</Link>
         <Link key="cancel" to={`/Kanbas/Courses/${cid}/Assignments/`} className="btn btn-secondary float-end">Cancel</Link>
-      </div>
+        </div>
     </div>
   );
 }
