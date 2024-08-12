@@ -29,7 +29,7 @@ export default function Dashboard(
             <div className="wd-dashboard-course col" style={{ width: "300px" }}>
               <Link to={`/Kanbas/Courses/${course._id}/Home`} className="text-decoration-none" >
                 <div className="card rounded-3 overflow-hidden">
-                <img src="/images/reactjs.jpg" height='{160}' />
+                  <img src={`/images/${course.image}`} height="{160}" />
                   <div className="card-body">
                     <span className="wd-dashboard-course-link"
                       style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
@@ -49,6 +49,7 @@ export default function Dashboard(
                     <button id="wd-edit-course-click"
                       onClick={(event) => {
                         event.preventDefault();
+                        console.log(course)
                         setCourse(course);
                       }}
                       className="btn btn-warning me-2 float-end" >

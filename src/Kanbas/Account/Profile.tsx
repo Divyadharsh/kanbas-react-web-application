@@ -1,18 +1,30 @@
 import * as client from "./client";
-import { useState, useEffect } from "react";
+import moment from 'moment';
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setCurrentUser } from "./reducer";
 export default function Profile() {
   const [profile, setProfile] = useState<any>({});
   const navigate = useNavigate();
   const fetchProfile = async () => {
-    const account = await client.profile();
-    setProfile(account);
+    try {
+      const account = await client.profile();
+      if (account != null) {
+        let dob = moment(new Date(account.dob))
+        account.dob = dob.format('YYYY-MM-DD')
+      }
+      setProfile(account);
+    } catch (err: any) {
+      navigate("/Kanbas/Account/Signin");
+    }
   };
+  const dispatch = useDispatch();
   const signout = async () => {
     await client.signout();
+    dispatch(setCurrentUser(null));
     navigate("/Kanbas/Account/Signin");
   };
-
   useEffect(() => { fetchProfile(); }, []);
   return (
     <div>
